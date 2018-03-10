@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { LinearGradient } from 'expo';
 
 import Button from '../Button';
 
 class Timer extends Component {
     render() {
         return (
-            <View style={styles.container}>
+            <LinearGradient style={styles.container} colors={['#5c76af', '#3b5998', '#192f6a']}>
                 <StatusBar barStyle={'light-content'} />
                 <View style={styles.upper}>
                     <Text style={styles.time}>25:00</Text>
@@ -15,7 +16,7 @@ class Timer extends Component {
                     <Button iconName="play-circle" onPress={() => alert('it works!')} />
                     <Button iconName="stop-circle" onPress={() => alert('it works!')} />
                 </View>
-            </View>
+            </LinearGradient>
         );
     }
 }
@@ -23,7 +24,6 @@ class Timer extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#CE0B28',
     },
     upper: {
         flex: 2,
