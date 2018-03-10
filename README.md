@@ -24,3 +24,5 @@
 <pre><code># install redux
 ]$ yarn add redux react-redux --save
 </code></pre>
+
+*   Provider on react-redux is copy the state to another components

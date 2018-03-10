@@ -38,6 +38,7 @@ const initialState = {
 
 /**
  * Call this function when initialState is changed
+ *
  * @param {*} state
  * @param {*} action
  */

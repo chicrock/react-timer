@@ -3,17 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Timer from './components/Timer';
 
-export default class App extends React.Component {
-  render() {
-    return <Timer />;
-  }
-}
+import reducer from './reduser';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+/// create redux store with reducer I made
+let store = createStore(reducer);
+
+export default class App extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <Timer />
+            </Provider>
+        );
+    }
+}
