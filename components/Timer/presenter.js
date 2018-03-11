@@ -5,8 +5,30 @@ import { LinearGradient } from 'expo';
 import Button from '../Button';
 
 class Timer extends Component {
+    /**
+     * Call every time will get new props
+     */
+    componentWillReceiveProps(nextProps) {
+        const currentProps = this.props;
+        //console.log(`current: ${currentProps.isPlaying} new ones: ${nextProps.isPlaying}`);
+
+        if (!currentProps.isPlaying && nextProps.isPlaying) {
+            /// start the interval
+            const timerInterval = setInterval(() => {
+                currentProps.addSecond();
+            }, 1000);
+
+            this.setState({
+                timerInterval,
+            });
+        } else if (currentProps.isPlaying && !nextProps.isPlaying) {
+            /// stop the interval
+            clearInterval(this.state.timerInterval);
+        }
+    }
     render() {
-        const { isPlaying, elapsedTime, timerDuration, startTimer, restartTimer } = this.props;
+        console.log(this.props);
+        const { isPlaying, elapsedTime, timerDuration, startTimer, restartTimer, addSecond } = this.props;
         return (
             <LinearGradient style={styles.container} colors={['#5c76af', '#3b5998', '#192f6a']}>
                 <StatusBar barStyle={'light-content'} />

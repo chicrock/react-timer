@@ -9,10 +9,10 @@ import Timer from './presenter';
  * @param {*} state
  */
 function mapStateToProps(state) {
-    const { isPlaying, elapedTime, timerDuration } = state;
+    const { isPlaying, elapsedTime, timerDuration } = state;
     return {
         isPlaying,
-        elapedTime,
+        elapsedTime,
         timerDuration,
     };
 }
@@ -26,6 +26,7 @@ function mapDispatchToProps(dispatch) {
     return {
         startTimer: bindActionCreators(tomatoActions.startTimer, dispatch),
         restartTimer: bindActionCreators(tomatoActions.restartTimer, dispatch),
+        addSecond: bindActionCreators(tomatoActions.addSecond, dispatch),
     };
 }
 
