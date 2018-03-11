@@ -4,6 +4,14 @@ import { LinearGradient } from 'expo';
 
 import Button from '../Button';
 
+function formatTime(time) {
+    let minutes = Math.floor(time / 60);
+    time -= minutes * 60;
+    let seconds = parseInt(time % 60, 10);
+
+    return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+}
+
 class Timer extends Component {
     /**
      * Call every time will get new props
@@ -33,7 +41,7 @@ class Timer extends Component {
             <LinearGradient style={styles.container} colors={['#5c76af', '#3b5998', '#192f6a']}>
                 <StatusBar barStyle={'light-content'} />
                 <View style={styles.upper}>
-                    <Text style={styles.time}>25:00</Text>
+                    <Text style={styles.time}>{formatTime(timerDuration - elapsedTime)}</Text>
                 </View>
                 <View style={styles.lower}>
                     {!isPlaying && <Button iconName="play-circle" onPress={startTimer} />}
